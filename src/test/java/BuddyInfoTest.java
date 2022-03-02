@@ -1,41 +1,41 @@
-//import addressbookrest.AddressBook;
-//import addressbookrest.BuddyInfo;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import javax.persistence.*;
-//
-//import java.util.List;
-//
-//import static org.junit.Assert.*;
-//
-//public class BuddyInfoTest {
-//
-//    private BuddyInfo buddy1;
-//    private BuddyInfo buddy2;
-//    private AddressBook addressBook1;
-//
-//    @Before
-//    public void setup(){
-//        buddy1 = new BuddyInfo("Alice", "Carleton", "123");
-//        buddy2 = new BuddyInfo("Brandon", "Carleton", "567");
-//        addressBook1 = new AddressBook();
-//    }
-//
-//    @Test
-//    public void getName() {
-//        assertEquals(buddy1.getName(), "Alice");
-//    }
-//
-//    @Test
-//    public void testEquals() {
-//        assertTrue(buddy1.equals(buddy1));
-//    }
-//
-//    @Test
-//    public void testNotEquals() {
-//        assertFalse(buddy1.equals(buddy2));
-//    }
+import addressbookrest.AddressBook;
+import addressbookrest.BuddyInfo;
+import org.junit.Before;
+import org.junit.Test;
+
+import javax.persistence.*;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+public class BuddyInfoTest {
+
+    private BuddyInfo buddy1;
+    private BuddyInfo buddy2;
+    private AddressBook addressBook1;
+
+    @Before
+    public void setup(){
+        buddy1 = new BuddyInfo("Alice", "Carleton", "123");
+        buddy2 = new BuddyInfo("Brandon", "Carleton", "567");
+        addressBook1 = new AddressBook();
+    }
+
+    @Test
+    public void getName() {
+        assertEquals(buddy1.getName(), "Alice");
+    }
+
+    @Test
+    public void testEquals() {
+        assertTrue(buddy1.equals(buddy1));
+    }
+
+    @Test
+    public void testNotEquals() {
+        assertFalse(buddy1.equals(buddy2));
+    }
 //
 //    @Test
 //    public void testPersist(){
@@ -60,7 +60,7 @@
 //
 //        for (BuddyInfo p : results) {
 //
-//            System.out.println(p.getName() + " (id=" + p.getName() + ")");
+//            System.out.println(p.getName() + " (id=" + p.getId() + ")");
 //        }
 //
 //        em.close();
@@ -100,7 +100,7 @@
 //
 //        for (BuddyInfo p : results2) {
 //
-//            System.out.println(p.getName() + " (id=" + p.getName() + ")");
+//            System.out.println(p.getName() + " (id=" + p.getId() + ")");
 //        }
 //
 //
@@ -108,4 +108,4 @@
 //
 //        emf.close();
 //    }
-//}
+}
