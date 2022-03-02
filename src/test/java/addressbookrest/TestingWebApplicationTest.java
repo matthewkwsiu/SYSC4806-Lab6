@@ -10,6 +10,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.aspectj.lang.annotation.After;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +27,29 @@ public class TestingWebApplicationTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Test
+    public void testCreateAddressBookAndAddAndRemoveBuddyInfo() throws Exception {
+        this.mockMvc.perform(get("/viewaddressbook")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("[]"));
+        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("[{\"id\":1,\"buddies\":[],\"name\":\"\"}]"));
+        this.mockMvc.perform(get("/getaddressbook?1")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\"id\":1,\"buddies\":[],\"name\":\"\"}"));
+        this.mockMvc.perform(post("/buddyinfo")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("viewgui?i=0")));
+        this.mockMvc.perform(post("/removebuddyinfo")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("removedAlex#123 Street#123-456-7890")));
+        this.mockMvc.perform(get("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("Add new addressbook")));
+        this.mockMvc.perform(post("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("1")));
+    }
+
 //    @Test
 //    public void testCreateAddressBook() throws Exception {
 //        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk())
 //                .andExpect(content().json("[{\"id\":1,\"buddies\":[],\"name\":\"\"}]"));
 //
 //    }
-
+//
 //    @Test
 //    public void testViewAddressBook() throws Exception {
 //        this.mockMvc.perform(get("/viewaddressbook")).andDo(print()).andExpect(status().isOk())
@@ -43,33 +62,31 @@ public class TestingWebApplicationTest {
 //        this.mockMvc.perform(get("/getaddressbook?1")).andDo(print()).andExpect(status().isOk())
 //                .andExpect(content().json("{\"id\":1,\"buddies\":[],\"name\":\"\"}"));
 //    }
+//
+//    @Test
+//    public void testCreateBuddyInfo() throws Exception {
+//        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk());
+//        this.mockMvc.perform(post("/buddyinfo")).andDo(print()).andExpect(status().isOk())
+//                .andExpect(content().string(containsString("viewgui?i=0")));
+//    }
+//
+//    @Test
+//    public void testRemoveBuddyInfo() throws Exception {
+//        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk());
+//        this.mockMvc.perform(post("/removebuddyinfo")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("removedAlex#123 Street#123-456-7890")));
+//    }
+//    @Test
+//    public void testViewAddressBooks() throws Exception {
+//        this.mockMvc.perform(get("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("Add new addressbook")));
+//        this.mockMvc.perform(post("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("1")));
+//    }
+//
+//    @Test
+//    public void testViewAddressBooksPost() throws Exception {
+//        this.mockMvc.perform(post("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("1")));
+//    }
 
-    @Test
-    public void testCreateBuddyInfo() throws Exception {
-        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk());
-        this.mockMvc.perform(post("/buddyinfo")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("viewgui?i=0")));
-    }
-
-    @Test
-    public void testRemoveBuddyInfo() throws Exception {
-        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk());
-        this.mockMvc.perform(post("/buddyinfo")).andDo(print()).andExpect(status().isOk());
-    }
-
-    @Test
-    public void testViewAddressBooks() throws Exception {
-        this.mockMvc.perform(get("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("Add new addressbook")));
-    }
-
-    @Test
-    public void testViewAddressBooksPost() throws Exception {
-        this.mockMvc.perform(post("/viewaddressbooks")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("1")));
-    }
 
 
-    @Test
-    public void shouldReturnDefaultMessage2() throws Exception {
-    }
 
 }

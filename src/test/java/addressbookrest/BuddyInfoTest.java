@@ -1,3 +1,5 @@
+package addressbookrest;
+
 import addressbookrest.AddressBook;
 import addressbookrest.BuddyInfo;
 import org.junit.Before;
