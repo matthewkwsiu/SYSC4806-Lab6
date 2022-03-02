@@ -1,0 +1,6 @@
+AddressBookTest.class
+BuddyInfoTest.class
+webtesting\HttpRequestTest.class
+webtesting\WebLayerTest.class
+webtesting\SmokeTest.class
+webtesting\TestingWebApplicationTests.class
