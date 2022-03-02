@@ -82,10 +82,10 @@ public class AddressBookController {
 //        return "removed" + new BuddyInfo(name, address, phoneNumber);
 //    }
 
-    @GetMapping("/testing123")
-    public String greetingForm2(Model model) {
-        model.addAttribute("greeting", new AddressBook());
-        return "addressbook";
-    }
+//    @GetMapping("/testing123")
+//    public String greetingForm2(Model model) {
+//        model.addAttribute("greeting", new AddressBook());
+//        return "addressbook";
+//    }
 
 }
