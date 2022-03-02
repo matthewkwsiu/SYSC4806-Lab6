@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: webtesting.WebLayerTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.143 s <<< FAILURE! - in webtesting.WebLayerTest
-shouldReturnDefaultMessage  Time elapsed: 0.066 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<404>
-	at webtesting.WebLayerTest.shouldReturnDefaultMessage(WebLayerTest.java:27)
-
