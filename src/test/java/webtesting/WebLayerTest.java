@@ -12,9 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import webtesting.HomeController;
 
-@WebMvcTest(AddressBookController.class)
+@WebMvcTest(HomeController.class)
 //tag::test[]
 public class WebLayerTest {
 
@@ -23,7 +24,7 @@ public class WebLayerTest {
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello, World")));
+        this.mockMvc.perform(get("/createaddressbook")).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("id")));
     }
 }
