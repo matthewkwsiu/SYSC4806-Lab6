@@ -24,27 +24,25 @@ public class TestingWebApplicationTest {
     @Autowired
     private MockMvc mockMvc;
 
-//    @Test
-//    public void testCreateAddressBook() throws Exception {
-//        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk())
-//                .andExpect(content().json("[{\"id\":1,\"buddies\":[],\"name\":\"\"}]"));
-//
-//    }
-//
+    @Test
+    public void testCreateAddressBook() throws Exception {
+        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("[{\"id\":1,\"buddies\":[],\"name\":\"\"}]"));
+
+    }
+
 //    @Test
 //    public void testViewAddressBook() throws Exception {
 //        this.mockMvc.perform(get("/viewaddressbook")).andDo(print()).andExpect(status().isOk())
 //                .andExpect(content().json("[]"));
 //    }
-
-    @Test
-    public void testGetAddressBook() throws Exception {
-//        this.mockMvc.perform(get("/viewaddressbook")).andDo(print()).andExpect(status().isOk())
-//                .andExpect(content().string(containsString("[")));
-        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk());
-        this.mockMvc.perform(get("/getaddressbook?1")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"buddies\":[],\"name\":\"\"}"));
-    }
+//
+//    @Test
+//    public void testGetAddressBook() throws Exception {
+//        this.mockMvc.perform(get("/createaddressbook")).andDo(print()).andExpect(status().isOk());
+//        this.mockMvc.perform(get("/getaddressbook?1")).andDo(print()).andExpect(status().isOk())
+//                .andExpect(content().json("{\"id\":1,\"buddies\":[],\"name\":\"\"}"));
+//    }
 
     @Test
     public void testCreateBuddyInfo() throws Exception {
