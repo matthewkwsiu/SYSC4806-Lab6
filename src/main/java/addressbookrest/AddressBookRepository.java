@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Repository
 @RepositoryRestResource(collectionResourceRel = "addressbook", path = "addressbook")
 public interface AddressBookRepository extends CrudRepository<AddressBook, Long> {
 
