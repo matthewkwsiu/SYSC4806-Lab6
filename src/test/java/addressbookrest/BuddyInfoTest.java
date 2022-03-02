@@ -3,7 +3,10 @@ package addressbookrest;
 import addressbookrest.AddressBook;
 import addressbookrest.BuddyInfo;
 import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
 
@@ -17,7 +20,7 @@ public class BuddyInfoTest {
     private BuddyInfo buddy2;
     private AddressBook addressBook1;
 
-    @Before
+    @BeforeEach
     public void setup(){
         buddy1 = new BuddyInfo("Alice", "Carleton", "123");
         buddy2 = new BuddyInfo("Brandon", "Carleton", "567");
